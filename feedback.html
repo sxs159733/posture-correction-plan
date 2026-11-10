@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="体态矫正 12 周训练计划 · 每日回采闭环：双行提问、CK1/MS1 数据格式、6.3 决策规则、每日运行 SOP、移动端输出偏好与验收清单。">
+<title>回采闭环 · 体态矫正 12 周训练计划</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-page="feedback">
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">态</span>
+      <span><span class="brand-txt">体态矫正 12 周</span><span class="brand-sub">POSTURE CORRECTION PLAN</span></span>
+    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+    <label for="nav-toggle" class="nav-label" aria-label="展开导航">☰</label>
+    <nav class="nav" aria-label="主导航">
+      <a data-page="overview" href="index.html">总览</a>
+      <a data-page="baseline" href="baseline.html">基线评估</a>
+      <a data-page="schedule" href="schedule.html">7 天课表</a>
+      <a data-page="progression" href="progression.html">12 周进阶</a>
+      <a data-page="feedback" href="feedback.html">回采闭环</a>
+      <a data-page="posters" href="posters.html">每日海报</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero compact">
+    <div class="wrap">
+      <div class="eyebrow">闭环 · 任务的灵魂</div>
+      <h1>先回一行字，<span class="grad">再决定今天</span></h1>
+      <p class="lede">每天刷新时，必须先回采昨天的完成度与个人感受，再据此决定今天加量、减量或改动作。<strong>没有身体反馈时不许加量</strong> —— 这是 6.3 节的关键约束。</p>
+      <div class="hero-meta">
+        <span class="tag sky">每天 05:15（GMT+8）</span>
+        <span class="tag violet">用户在手机微信读回复</span>
+        <span class="tag coral">本地 HTML 打不开</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="toc">
+        <span class="toc-label">本页导航</span>
+        <a href="#channel">唯一真实通路</a>
+        <a href="#questions">双行提问</a>
+        <a href="#format">数据格式</a>
+        <a href="#decision">调整决策</a>
+        <a href="#sop">每日 SOP</a>
+        <a href="#prefs">移动端偏好</a>
+        <a href="#history">已知状态</a>
+        <a href="#checklist">验收清单</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="channel">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">01</span>唯一真实通路</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <span class="tag mint">有效</span>
+          <h3 style="margin-top:10px">用户在对话里回一行文字</h3>
+          <p>Agent 解析 → 写入 <code>回采记录.md</code> 台账 → 次日据此调整课表。</p>
+          <p>Agent <strong>读不到浏览器 localStorage</strong>：HTML 卡片里的勾选框只存在用户本机浏览器里。</p>
+          <div class="callout info" style="margin-top:12px">
+            <h4>因此</h4>
+            <p>回采提问必须同时出现在<strong>对话正文</strong>和<strong>海报底部</strong>，不能只放交互页面。</p>
+          </div>
+        </div>
+        <div class="card">
+          <span class="tag coral">试过但无效</span>
+          <h3 style="margin-top:10px">三种增加摩擦的方案</h3>
+          <ul style="margin-top:10px">
+            <li>一键四档回采按钮</li>
+            <li>自动复制回采码到剪贴板</li>
+            <li>回采码导入导出</li>
+          </ul>
+          <p style="margin-top:12px">根因：用户在手机微信读回复，本地 HTML 根本没被打开过。</p>
+          <div class="callout danger" style="margin-top:12px">
+            <h4>一句话教训</h4>
+            <p>任何改动若增加回采摩擦，都会让闭环断掉。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="questions">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">02</span>固定双行提问</h2>
+        <p>一次只问最少的字，并给一个可直接抄改的例句。</p>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <div class="qbox">
+            <div class="qline"><span>昨天：</span>完成度 / 一个针对性体感</div>
+            <div class="qline"><span>今天：</span>完成度 / RPE / 哪里酸</div>
+          </div>
+          <div class="qeg">例：昨天 100 / 臀有感 · 今天 80 / 6 / 肩前侧</div>
+          <div class="callout info" style="margin-top:14px">
+            <h4>周日 / 周一额外追缴</h4>
+            <p>体重 / 腰围 / 后脑离墙。周日是每周结算点，每 4 周还要同条件复测。</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>针对性体感按课型轮换</h3>
+          <div class="kv" style="margin-top:10px">
+            <div class="kv-row"><span class="k">后链日</span><span class="v">臀能不能找到发力</span></div>
+            <div class="kv-row"><span class="k">下肢力线日</span><span class="v">膝内侧晃不晃</span></div>
+            <div class="kv-row"><span class="k">上肢推日</span><span class="v">肩前侧夹不夹</span></div>
+            <div class="kv-row"><span class="k">上肢拉日</span><span class="v">哪里酸</span></div>
+            <div class="kv-row"><span class="k">循环日</span><span class="v">哪里最喘</span></div>
+          </div>
+          <p style="margin-top:12px">这些体感同时是 6.3 节的降级触发信号：一旦上报酸痛 / 膝内侧晃 / 肩前侧夹挤，对应动作立即降级或替换，不硬扛。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="format">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">03</span>数据格式与台账</h2>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>两种结构化码</h3>
+          <div class="codeblock" style="margin-top:12px"><b>CK1|</b>日期|完成度|RPE|精力|酸痛|感受
+<b>MS1|</b>日期|体重|腰围|后脑离墙</div>
+          <p style="margin-top:12px"><strong>自由文本优先接受</strong>，哪怕只有「练了」两个字 —— 先记完成度，细节后补。</p>
+        </div>
+        <div class="card">
+          <h3>台账表头</h3>
+          <div class="codeblock" style="margin-top:12px">日期 | 课型 | 完成度 | RPE | 精力 | 酸痛 | 感受</div>
+          <p style="margin-top:12px">用户回复后，解析结果追加到 <code>回采记录.md</code>；若 <code>今日训练卡.html</code> 存在，同步写进它的 <code>ARCHIVE</code> 常量。</p>
+          <p>台账另设「累计观察」，每日记录零回采天数与版本判断。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="decision">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">04</span>调整决策规则（6.3）</h2>
+        <p>判断理由必须写在海报顶部提示条里。</p>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>有回复</h3>
+          <ul style="margin-top:10px">
+            <li>哪怕只两字 → 优先抓<strong>完成度 + 当课型的针对性体感</strong>（膝内侧 / 左臀 / 肩前侧），再谈加量。</li>
+            <li>完成度 <strong>100%</strong> 且 <strong>RPE ≤ 6</strong> 且连续达标 → 才按 4.3 进加量台阶。</li>
+            <li>上报酸痛 / 膝内侧晃 / 肩前侧夹挤 → 对应动作降级或替换，不硬扛。</li>
+            <li>出现麻木 / 放射痛 → 停训就医，写进当日海报红线。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>无回复</h3>
+          <ul style="margin-top:10px">
+            <li>累计零回采天数 <strong>+1</strong>；顶部写明「N 天没有回采，不加组、不加重量、不补课」。</li>
+            <li>连续 ≥ <strong>3 天</strong> → 本周加量条降级为「<strong>回归版 · 本周先不加量</strong>」，不补偿、不补课。</li>
+            <li>连续 ≥ <strong>5 天</strong> → 明确写「上周整周没有回采 · 不补课不补偿」。</li>
+            <li>结算点（周日 / 第 4 周）无数据 → 不进加量台阶，维持第 1 周标准版，并追缴三个数字。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h3>决策链</h3>
+        <div class="chain" style="margin-top:12px">
+          <span class="node">刷新 · 读台账</span><span class="arrow">→</span>
+          <span class="node">昨天有回采？</span><span class="arrow">→</span>
+          <span class="node">无 → 零回采 +1 · 回归版</span><span class="arrow">→</span>
+          <span class="node">有 → 看酸痛 / 完成度 / RPE</span><span class="arrow">→</span>
+          <span class="node key">定执行版本</span><span class="arrow">→</span>
+          <span class="node">理由写进提示条</span>
+        </div>
+        <div class="callout" style="margin-top:14px">
+          <h4>三种执行版本</h4>
+          <p><strong>标准版</strong>（第 1 周容量）｜<strong>回归版</strong>（无反馈，维持标准版、不加量）｜<strong>加量版</strong>（仅在 100% + RPE≤6 + 连续达标后出现）。减量周是计划内 −40% 容量，与这三者不冲突，需要在提示条里单独说明。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="sop">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">05</span>每日运行 SOP</h2>
+        <p>读历史 → 算课次 → 回采昨天 → 依反馈调整今天 → 出海报 → 更新台账 → 交付。</p>
+      </div>
+      <div class="card">
+        <div class="steps">
+          <div class="step"><h4>Step 0 · 读历史（必做）</h4><p>移植包 + 回采台账 + 自动化记忆 + 最近一次交付物；确认昨天有没有运行记录、有没有回采数据、当前连续零回采天数、本周是否该进加量台阶。</p></div>
+          <div class="step"><h4>Step 1 · 算今天</h4><p>按 4.1 算周次 / 本周第几天 / 星期 → 取 4.2 对应课次；写明「第 N 周第 D 天 · 分期 · 标准版 / 加量版 / 回归版」。</p></div>
+          <div class="step"><h4>Step 2 · 回采昨天（灵魂，不能省）</h4><p>在对话正文里直接问，别指望用户去打开 HTML 点按钮；固定双行格式 + 例句；周日 / 周一额外追缴三个数字。</p></div>
+          <div class="step"><h4>Step 3 · 依反馈调整今天</h4><p>解析 CK1 或自由文本并追加台账；按 6.3 定执行版本，把判断理由写在海报顶部提示条；无回复则零回采 +1。</p></div>
+          <div class="step"><h4>Step 4 · 生成今日海报（主交付物）</h4><p>写 <code>poster-MMDD.html</code> → 渲染 <code>poster_MMDD.png</code>。PNG 是主交付物：手机微信里本地 HTML 打不开，图片能直接看、能点开放大。</p></div>
+          <div class="step"><h4>Step 5 · 检查再交付</h4><p>截图后分段检查顶部与底部文字是否截断 / 重叠；用 present_files 交付 PNG + HTML 源文件；对话正文按第 3 节偏好写 5–8 条要点 + 回采提问。</p></div>
+          <div class="step"><h4>Step 6 · 收尾</h4><p>追加台账「累计观察」、写当日工作日志、写自动化记忆（只写摘要与判断，不放海报全文）。</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="prefs">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">06</span>移动端输出偏好（强约束）</h2>
+        <p>用户在手机微信上读回复，按移动端排版，不假设宽屏。</p>
+      </div>
+      <div class="grid g3">
+        <div class="card tight"><h4>不要宽表格</h4><p>超过 3 列就拆成列表。</p></div>
+        <div class="card tight"><h4>每行短</h4><p>一行一个信息点，不堆长句和数字串。</p></div>
+        <div class="card tight"><h4>结论前置</h4><p>第一屏先给「今天练什么 / 有没有加量 / 需要你回什么」。</p></div>
+        <div class="card tight"><h4>重要数字单独成行 + 加粗</h4><p>金额 / 数值保留两位小数即可。</p></div>
+        <div class="card tight"><h4>少用标题层级</h4><p>用空行 + 加粗分段。</p></div>
+        <div class="card tight"><h4>正文只留 5–8 条要点</h4><p>长明细放进文件给路径；语气直接，不客套。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="history">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">07</span>已知状态与内容纪要</h2>
+        <p>以下为计划文档 6.4 / 第 7 节记录的历史，用于理解每条规则背后的原因。</p>
+      </div>
+      <div class="grid g2">
+        <div class="card">
+          <h3>已知状态（6.4）</h3>
+          <ul style="margin-top:10px">
+            <li>2026-10-19 ~ 11-03 累计 <strong>15 天零回采</strong>，用户从未回传完成度或感受。</li>
+            <li>第 3 周虽按计划应「同重量加组数」，实际维持第 1 周标准版。</li>
+            <li>11-01（周日结算点）、11-02 无运行记录 → 第 2 周结算点三个数字丢失。</li>
+            <li>11-04 起原任务 PAUSED，无交付物，直到 11-07 用户来导出任务。</li>
+            <li>2026-11-09 起是第 4 周：<strong>减量周 + 体成分复测</strong>。若仍无基线数据，复测没有对照价值。</li>
+            <li>周次不要因为中断而重置，继续以 2026-10-19 计算。</li>
+          </ul>
+          <div class="callout" style="margin-top:12px">
+            <h4>台账快照 · 截至 2026-11-10</h4>
+            <p>连续零回采 <strong>22 天</strong>；台账表仍为空（无 CK1 / MS1 记录）。11-01、11-08、11-09 三次结算点数字均丢失 → 复测只建基线。此数字为站点生成时的快照，每日自动化会继续追加台账。</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>计划是怎么长成现在这样的</h3>
+          <div class="kv" style="margin-top:10px">
+            <div class="kv-row"><span class="k">10-19</span><span class="v">12 周交互看板 <em>分析 / 周计划 / 趋势 / 围度</em></span></div>
+            <div class="kv-row"><span class="k">10-20</span><span class="v">新增今日训练卡 <em>7 天课表按星期切换</em></span></div>
+            <div class="kv-row"><span class="k">10-21~24</span><span class="v">卡片 v2–v5 <em>修死写周二、加渐进超负荷、四档回采</em></span></div>
+            <div class="kv-row"><span class="k">10-24</span><span class="v">用户明确在手机微信看 <em>定下长期输出格式</em></span></div>
+            <div class="kv-row"><span class="k">10-26</span><span class="v">课表与回采提问搬进对话正文</span></div>
+            <div class="kv-row"><span class="k">10-29</span><span class="v">主交付物改为 860px 竖版 PNG 海报</span></div>
+            <div class="kv-row"><span class="k">10-30/31</span><span class="v">主题色按课型轮转 · 双行回采</span></div>
+            <div class="kv-row"><span class="k">11-03</span><span class="v">15 天零回采 → 顶部新增「不加量」提示条</span></div>
+            <div class="kv-row"><span class="k">11-07</span><span class="v">聊天内容转成 Markdown 移植包</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="checklist">
+    <div class="wrap">
+      <div class="section-head">
+        <h2><span class="section-num">08</span>每次运行自检清单</h2>
+      </div>
+      <div class="card">
+        <div class="checks">
+          <div class="check">昨天的完成度与感受<strong>问了</strong>（正文 + 海报双处）</div>
+          <div class="check">今天的加量 / 减量有明确判断且写了理由</div>
+          <div class="check">课次与星期、周次对得上（起点 2026-10-19，不重置）</div>
+          <div class="check">主训练动作都有「没器械」替代</div>
+          <div class="check">安全红线在（含侧弯 / O 型腿未确诊禁项）</div>
+          <div class="check">页脚有明天预告 + 复测 / 结算提醒</div>
+          <div class="check">PNG 是 860px 宽竖版，顶 / 底无截断</div>
+          <div class="check">附件已通过 present_files 交付</div>
+          <div class="check">台账、日志、自动化记忆已更新</div>
+          <div class="check">对话正文符合第 3 节移动端偏好</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <p><strong>体态矫正 12 周训练计划</strong> · 评估日 2026-10-19</p>
+      <p>事实来源：工作区《锻炼计划-定时任务移植包.md》</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">总览</a>
+      <a href="baseline.html">基线评估</a>
+      <a href="schedule.html">7 天课表</a>
+      <a href="progression.html">12 周进阶</a>
+      <a href="posters.html">每日海报</a>
+    </div>
+  </div>
+  <div class="wrap footer-note">身体数据来自 BIA 体测与教练站立位目视筛查，属初步筛查，不是医学诊断。本站只呈现计划内容与训练安排，不替代临床评估。</div>
+</footer>
+
+<button id="to-top" class="to-top" aria-label="回到顶部">↑</button>
+<script src="assets/js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>体态矫正训练 · 2026-11-08</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 430px;
+    background: #080a10;
+    color: #e8eef7;
+    font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+    font-size: 12.5px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { position: relative; width: 430px; overflow: hidden; padding: 0 0 30px; }
+  .glow { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
+  .g1 { width: 340px; height: 340px; top: -110px; left: -110px; background: rgba(120,150,190,.20); }
+  .g2 { width: 300px; height: 300px; top: 420px; right: -130px; background: rgba(90,120,165,.14); }
+  .g3 { width: 360px; height: 360px; top: 1500px; left: -150px; background: rgba(110,140,175,.10); }
+  .inner { position: relative; z-index: 1; padding: 20px 18px 0; }
+  .card {
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(160,190,225,.13);
+    border-radius: 16px;
+    padding: 15px 16px;
+    margin-bottom: 13px;
+  }
+  .topbar { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 3px; }
+  .tb-date { font-size: 13px; font-weight: 750; letter-spacing: .5px; color: #dce8f7; }
+  .tb-week { font-size: 12px; font-weight: 700; color: #9fb6d2; text-align: right; }
+  .tb-sub { display: flex; justify-content: space-between; font-size: 11px; color: #7d8ca0; border-top: 1px solid rgba(160,190,225,.10); padding-top: 8px; margin-top: 9px; }
+  .chip { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 10.5px; font-weight: 700; letter-spacing: .4px; }
+  .chip-blue { background: rgba(143,168,200,.16); color: #b7cbe3; border: 1px solid rgba(143,168,200,.32); }
+  .chip-warn { background: rgba(251,191,36,.12); color: #f4c95d; border: 1px solid rgba(251,191,36,.30); }
+
+  .hero { padding: 20px 16px 18px; margin-bottom: 13px; }
+  .tag { font-size: 10px; letter-spacing: 2px; font-weight: 800; color: #8fa8c8; margin-bottom: 10px; }
+  h1 { margin: 0; font-size: 34px; line-height: 1.25; font-weight: 850; letter-spacing: -.5px; color: #eaf1fa; }
+  h1 .grad { background: linear-gradient(100deg,#cfdff2 0%,#8fa8c8 55%,#6f8bab 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hero-meta { margin-top: 12px; font-size: 12.5px; color: #a9bbd1; }
+  .hero-meta b { color: #dce8f7; }
+  .hero-note { margin-top: 7px; font-size: 11.5px; color: #7d8ca0; }
+
+  .notice {
+    background: linear-gradient(135deg, rgba(143,168,200,.12), rgba(251,191,36,.06));
+    border: 1px solid rgba(160,190,225,.26);
+    border-left: 3px solid #a9bcd6;
+  }
+  .notice h2 { margin: 0 0 9px; font-size: 14px; font-weight: 800; color: #e5edf8; }
+  .notice h2 span { color: #f4c95d; }
+  .notice p { margin: 0 0 5px; font-size: 11.5px; color: #b3c2d6; }
+  .notice p:last-child { margin-bottom: 0; }
+  .notice .strike { color: #e5edf8; font-weight: 700; }
+
+  .sect { display: flex; align-items: center; gap: 8px; margin: 0 0 11px; }
+  .sect .bar { width: 3px; height: 15px; border-radius: 2px; background: #9fb6d2; }
+  .sect .t { font-size: 14px; font-weight: 800; color: #e5edf8; letter-spacing: .3px; }
+  .sect .n { margin-left: auto; font-size: 10.5px; color: #75869b; }
+
+  .kp { display: flex; gap: 10px; padding: 9px 0; border-bottom: 1px dashed rgba(160,190,225,.13); }
+  .kp:last-child { border-bottom: 0; padding-bottom: 1px; }
+  .kp .num { flex: 0 0 20px; height: 20px; border-radius: 6px; background: rgba(143,168,200,.16); color: #b7cbe3; font-size: 11px; font-weight: 800; text-align: center; line-height: 20px; }
+  .kp .txt { flex: 1; font-size: 11.8px; color: #c2cfe0; }
+  .kp .txt b { color: #e8eef7; }
+
+  .phase { margin-bottom: 12px; }
+  .phase:last-child { margin-bottom: 0; }
+  .ph-head { display: flex; align-items: center; gap: 7px; margin-bottom: 7px; }
+  .ph-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .ph-name { font-size: 12px; font-weight: 800; letter-spacing: .4px; }
+  .ph-time { margin-left: auto; font-size: 10.5px; color: #7d8ca0; }
+  .item { background: rgba(255,255,255,.025); border: 1px solid rgba(160,190,225,.09); border-radius: 10px; padding: 8px 10px; margin-bottom: 6px; }
+  .item:last-child { margin-bottom: 0; }
+  .it-top { display: flex; justify-content: space-between; gap: 8px; }
+  .it-name { font-size: 11.8px; font-weight: 750; color: #e2eaf5; }
+  .it-set { font-size: 11px; color: #9fb6d2; white-space: nowrap; font-weight: 700; }
+  .it-tip { font-size: 11px; color: #93a3b7; margin-top: 3px; }
+  .it-alt { font-size: 10.8px; color: #8fa8c8; margin-top: 4px; padding-top: 4px; border-top: 1px dashed rgba(160,190,225,.14); }
+  .it-alt b { color: #c2d6ee; }
+
+  .row { display: flex; gap: 9px; padding: 7px 0; border-bottom: 1px dashed rgba(160,190,225,.12); }
+  .row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .row .k { flex: 0 0 44px; font-size: 11px; font-weight: 800; color: #9fb6d2; }
+  .row .v { flex: 1; font-size: 11.5px; color: #c2cfe0; }
+  .row .v b { color: #e8eef7; }
+
+  .red li { font-size: 11.4px; color: #c2cfe0; margin-bottom: 6px; padding-left: 14px; position: relative; list-style: none; }
+  .red li:last-child { margin-bottom: 0; }
+  .red li::before { content: ""; position: absolute; left: 0; top: 8px; width: 5px; height: 5px; border-radius: 50%; background: #fb7185; }
+  .red ul { margin: 0; padding: 0; }
+  .red li b { color: #ffd0d6; }
+
+  .fb { background: linear-gradient(135deg, rgba(143,168,200,.15), rgba(110,140,175,.06)); border: 1px solid rgba(160,190,225,.34); }
+  .fb .q { background: rgba(8,10,16,.42); border: 1px solid rgba(160,190,225,.18); border-radius: 10px; padding: 9px 11px; margin-bottom: 6px; font-size: 12.5px; font-weight: 750; color: #eaf1fa; letter-spacing: .2px; }
+  .fb .q span { color: #9fb6d2; font-weight: 700; }
+  .fb .eg { font-size: 11px; color: #93a3b7; margin: 2px 0 9px; }
+  .fb .extra { font-size: 11.3px; color: #c2d6ee; background: rgba(251,191,36,.08); border-left: 2px solid #d7a93a; padding: 6px 9px; border-radius: 5px; margin-bottom: 8px; }
+  .fb .code { font-size: 10.3px; color: #7d8ca0; word-break: break-all; line-height: 1.6; }
+  .fb .code b { color: #9fb6d2; }
+
+  .foot { padding-bottom: 4px; }
+  .goal { display: flex; justify-content: space-between; gap: 6px; margin-bottom: 8px; }
+  .goal > div { flex: 1; background: rgba(255,255,255,.03); border: 1px solid rgba(160,190,225,.10); border-radius: 9px; padding: 7px 6px; text-align: center; }
+  .goal .lb { font-size: 10px; color: #7d8ca0; }
+  .goal .vl { font-size: 11.5px; font-weight: 800; color: #dce8f7; margin-top: 2px; }
+  .pbar { height: 6px; border-radius: 4px; background: rgba(160,190,225,.12); overflow: hidden; margin: 3px 0 5px; }
+  .pbar i { display: block; height: 100%; width: 0%; background: linear-gradient(90deg,#8fa8c8,#c2d6ee); }
+  .foot-note { font-size: 10.8px; color: #7d8ca0; }
+  .tmr { margin-top: 11px; padding: 9px 11px; border-radius: 10px; background: rgba(143,168,200,.09); border: 1px solid rgba(160,190,225,.15); font-size: 11.3px; color: #c2cfe0; }
+  .tmr b { color: #dce8f7; }
+  .rt { margin-top: 8px; font-size: 11px; color: #9fb6d2; }
+  .sig { text-align: center; font-size: 10px; color: #5d6c80; letter-spacing: 1px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+  <div class="inner">
+
+    <!-- 1 顶栏 -->
+    <div class="card" style="padding:14px 16px;">
+      <div class="topbar">
+        <div class="tb-date">2026.11.08 · 周日</div>
+        <div class="tb-week">第 3 周 · 第 7 天</div>
+      </div>
+      <div class="tb-sub">
+        <span>W1–W4 松解唤醒期</span>
+        <span>回归版 · 维持第 1 周标准版</span>
+      </div>
+    </div>
+
+    <!-- 2 Hero -->
+    <div class="card hero">
+      <div class="tag">RECOVERY · 完全休息 / 周结算点</div>
+      <h1>今天不练<br><span class="grad">把三个数字交回来</span></h1>
+      <div class="hero-meta"><b>20 min</b> ｜ 靠墙站测试 · 过顶深蹲 · 单腿站立 · 泡沫轴</div>
+      <div class="hero-note">不练力量。睡眠 ≥ 7.5 小时就是今天的训练量。</div>
+    </div>
+
+    <!-- 3 提示条 -->
+    <div class="card notice">
+      <h2>⚠ <span>20 天</span>没有回采 · 不加组、不加重量、不补课</h2>
+      <p>11-07 周六无运行记录、无回采 → 连续零回采 <span class="strike">+1 天（15 → 20）</span>。</p>
+      <p>连续 ≥ 5 天：<span class="strike">上周整周没有回采 · 不补课、不补偿</span>。</p>
+      <p>今天是周日结算点仍无数据 → <span class="strike">不进加量台阶</span>，维持第 1 周标准版。</p>
+      <p>无酸痛 / 疼痛上报 → 无需降级动作；也<span class="strike">不满足</span>「100% + RPE≤6」加量条件。</p>
+      <p>今天只做三件事：回一行字、量三个数、睡够 7.5 小时。</p>
+    </div>
+
+    <!-- 4 三个关键点 -->
+    <div class="card">
+      <div class="sect"><div class="bar"></div><div class="t">今天三个关键点</div><div class="n">TOP 3</div></div>
+      <div class="kp"><div class="num">1</div><div class="txt"><b>不练力量</b>。20 min 自测 + 泡沫轴拉伸，不把休息日补成加练日。</div></div>
+      <div class="kp"><div class="num">2</div><div class="txt"><b>三个数字</b>：体重 / 腰围 / 后脑离墙。晨起空腹、同条件，量完直接回在对话里。</div></div>
+      <div class="kp"><div class="num">3</div><div class="txt"><b>明天进 W4</b>：11-09 起减量周（容量 −40%）+ 体成分复测。今天的数据是唯一对照基线。</div></div>
+    </div>
+
+    <!-- 5 四阶段课表 -->
+    <div class="card">
+      <div class="sect"><div class="bar"></div><div class="t">今日课表 · 恢复日 20 min</div><div class="n">4 阶段</div></div>
+
+      <div class="phase">
+        <div class="ph-head"><div class="ph-dot" style="background:#fb7185"></div><div class="ph-name" style="color:#fb7185">松解</div><div class="ph-time">6 min</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">泡沫轴全身放松</div><div class="it-set">2 min / 部位</div></div><div class="it-tip">小腿 → 大腿后侧 → 上背；慢滚，痛点停 10 秒呼气。</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">足底筋膜滚球</div><div class="it-set">1 min / 侧</div></div><div class="it-tip">配合短足前的足底唤醒，不压脚趾。</div></div>
+      </div>
+
+      <div class="phase">
+        <div class="ph-head"><div class="ph-dot" style="background:#fbbf24"></div><div class="ph-name" style="color:#fbbf24">激活</div><div class="ph-time">4 min</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">短足运动</div><div class="it-set">10 次 ×2</div></div><div class="it-tip">赤足，大脚趾压地；<b>不屈脚趾</b>，只把足弓「缩短」。</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">90/90 呼吸</div><div class="it-set">2 min</div></div><div class="it-tip">呼气收肋、腰不塌，为明天后链日预热。</div></div>
+      </div>
+
+      <div class="phase">
+        <div class="ph-head"><div class="ph-dot" style="background:#38bdf8"></div><div class="ph-name" style="color:#38bdf8">主训练 · 体态自测（不加重）</div><div class="ph-time">6 min</div></div>
+        <div class="item">
+          <div class="it-top"><div class="it-name">靠墙站测试</div><div class="it-set">记录后脑离墙</div></div>
+          <div class="it-tip">肩胛 / 臀 / 脚跟 4 点贴墙，量后脑自然离墙距离，别硬压。</div>
+          <div class="it-alt"><b>没器械：</b>一面墙 + 一把直尺即可；手机拍照侧面更准。</div>
+        </div>
+        <div class="item">
+          <div class="it-top"><div class="it-name">坐姿抬腿</div><div class="it-set">10 次 / 侧</div></div>
+          <div class="it-tip">坐直不后仰，膝盖伸直慢抬，腰不代偿。</div>
+          <div class="it-alt"><b>没器械：</b>徒手坐稳固椅子做，无需任何负重。</div>
+        </div>
+        <div class="item">
+          <div class="it-top"><div class="it-name">过顶深蹲</div><div class="it-set">5 次</div></div>
+          <div class="it-tip">只看动作质量：膝对第二脚趾，不内扣，不追求深度。</div>
+          <div class="it-alt"><b>没器械：</b>徒手或举一根扫帚杆过顶，不加重量。</div>
+        </div>
+        <div class="item">
+          <div class="it-top"><div class="it-name">单腿站立平衡</div><div class="it-set">30 秒 / 侧</div></div>
+          <div class="it-tip">赤足、大脚趾压地；骨盆别掉，扶墙防摔。</div>
+          <div class="it-alt"><b>没器械：</b>赤足即可，旁边有墙 / 椅背做保护。</div>
+        </div>
+      </div>
+
+      <div class="phase">
+        <div class="ph-head"><div class="ph-dot" style="background:#a78bfa"></div><div class="ph-name" style="color:#a78bfa">收尾</div><div class="ph-time">4 min + 睡眠</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">全身静态拉伸</div><div class="it-set">30 秒 ×2 / 处</div></div><div class="it-tip">胸小肌 / 髋前侧 / 腘绳肌；拉到轻微紧，不疼。</div></div>
+        <div class="item"><div class="it-top"><div class="it-name">睡眠</div><div class="it-set">≥ 7.5 小时</div></div><div class="it-tip">恢复日的硬指标，比多练一组更值钱。</div></div>
+      </div>
+    </div>
+
+    <!-- 6 饮食锚点 -->
+    <div class="card">
+      <div class="sect"><div class="bar"></div><div class="t">今日饮食锚点</div><div class="n">休息日</div></div>
+      <div class="row"><div class="k">练前</div><div class="v">今天不训练。<b>晨起空腹先称体重、量腰围</b>，再喝 300 ml 水。</div></div>
+      <div class="row"><div class="k">练后</div><div class="v">自测 / 拉伸后 1 小时内补蛋白 <b>25–30 g</b>（鸡蛋 / 乳清 / 鸡胸）。</div></div>
+      <div class="row"><div class="k">今天</div><div class="v"><b>1950 kcal · 蛋白 125 g</b>；碳水 200 g（休息日不加 30 g），脂肪 ≥ 50 g。本周 Zone 2 累计 150 min 仍要凑够。</div></div>
+    </div>
+
+    <!-- 7 安全红线 -->
+    <div class="card red">
+      <div class="sect"><div class="bar" style="background:#fb7185"></div><div class="t">安全红线</div><div class="n">必读</div></div>
+      <ul>
+        <li><b>侧弯 / O 型腿未确诊前</b>：不做强力侧弯矫正、不绑腿、不做大幅度主动旋转负重；只做「抗旋」如 Pallof Press，先去康复科 / 骨科确诊。</li>
+        <li>出现<b>麻木、放射痛、夜间静息痛</b> → 立即停训就医。</li>
+        <li><b>肩前侧夹挤感</b> → 降重量，不是「练开了」。</li>
+        <li>靠墙站别把后脑硬压上墙，只记自然离墙距离；过顶深蹲只做 5 次不加重；单腿站立扶墙防跌倒。</li>
+        <li>今天不练力量。20 天零回采期间<b>不加组、不加重量、不补课</b>。</li>
+      </ul>
+    </div>
+
+    <!-- 8 回采提问 -->
+    <div class="card fb">
+      <div class="sect"><div class="bar"></div><div class="t">回一行字就行</div><div class="n">回采</div></div>
+      <div class="q"><span>昨天：</span>完成度 / 一个针对性体感</div>
+      <div class="q"><span>今天：</span>完成度 / RPE / 哪里酸</div>
+      <div class="eg">例：昨天 100 / 臀有感 · 今天 80 / 6 / 肩前侧</div>
+      <div class="extra">昨天是周六 · 代谢循环日 → 体感问「<b>哪里最喘</b>」。<br>今天周日额外追缴：<b>体重 / 腰围 / 后脑离墙</b>。</div>
+      <div class="code"><b>CK1|</b>2026-11-07|完成度|RPE|精力|酸痛|感受<br><b>MS1|</b>2026-11-08|体重|腰围|后脑离墙<br>自由文本也收，哪怕只回「练了」两个字。</div>
+    </div>
+
+    <!-- 9 页脚 -->
+    <div class="card foot">
+      <div class="sect"><div class="bar"></div><div class="t">目标进度</div><div class="n">12 周</div></div>
+      <div class="goal">
+        <div><div class="lb">腰围</div><div class="vl">91.4 → &lt;86</div></div>
+        <div><div class="lb">体重</div><div class="vl">76.4 → ~70</div></div>
+        <div><div class="lb">体脂</div><div class="vl">23.1 → &lt;20</div></div>
+      </div>
+      <div class="pbar"><i></i></div>
+      <div class="foot-note">进度条空白：20 天零回采，无体重 / 腰围 / 完成度数据。今天量一次就能启动。</div>
+      <div class="tmr"><b>明天预告 · 11-09 周一</b><br>骨盆前倾矫正 / 后链主导 · 55 min · 力量 A<br>进入<b>第 4 周减量周</b>：容量 −40%，先松髂腰肌再练臀。</div>
+      <div class="rt">复测提醒：今天是第 3 周周日结算点；11-01 结算点三个数字已丢失。11-09 起 W4 减量周 + 体成分复测，每 4 周同条件复测体重 / 腰围 / 靠墙站。</div>
+    </div>
+
+    <div class="sig">体态矫正训练 · 第 3 周第 7 天 · 依据 2026-10-19 基线</div>
+  </div>
+</div>
+</body>
+</html>
